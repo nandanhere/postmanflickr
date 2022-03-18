@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "99f34fb6-a417-4987-b1f1-78c78499acc5",
+		"name": "flickr_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getpopular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							" "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randomSorts = [\"faves\", \"views\", \"comments\" ,\"interesting\"];",
+							"var randomUser = [\"98043140@N05\", \"98043140@N05\", \"comments\" ,\"interesting\"];",
+							"",
+							"var randomExtras = ['description', ' license', ' date_upload', ' date_taken', ' owner_name', ' icon_server', ' original_format', ' last_update', ' geo', ' tags', ' machine_tags', ' o_dims', ' views', ' media', ' path_alias', ' url_sq', ' url_t', ' url_s', ' url_q', ' url_m', ' url_n', ' url_z', ' url_c', ' url_l', ' url_o'];",
+							"var numofpages = 2;",
+							"pm.environment.set('EXTRAS',randomExtras[_.random(randomExtras.length-1)]);",
+							"pm.environment.set('SORT',randomSorts[_.random(randomSorts.length-1)]);",
+							"pm.environment.set('HOWMANY',_.random(500));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.flickr.com/services/rest/?method=flickr.photos.getPopular&api_key={{api_key}}&user_id=98043140@N05&sort={{SORT}}&extras={{EXTRAS}}&per_page={{HOWMANY}}&page=2",
+					"protocol": "https",
+					"host": [
+						"api",
+						"flickr",
+						"com"
+					],
+					"path": [
+						"services",
+						"rest",
+						""
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "flickr.photos.getPopular"
+						},
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "user_id",
+							"value": "98043140@N05"
+						},
+						{
+							"key": "sort",
+							"value": "{{SORT}}"
+						},
+						{
+							"key": "extras",
+							"value": "{{EXTRAS}}"
+						},
+						{
+							"key": "per_page",
+							"value": "{{HOWMANY}}"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "callback",
+							"value": "https://github.com/nandanhere/",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{consumersecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{consumerkey}}",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.flickr.com/services/oauth/request_token",
+					"protocol": "https",
+					"host": [
+						"www",
+						"flickr",
+						"com"
+					],
+					"path": [
+						"services",
+						"oauth",
+						"request_token"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauthpart2",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "tokenSecret",
+							"value": "f452f85593e5698e",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "72157720836516782-d97504452506fbb9",
+							"type": "string"
+						},
+						{
+							"key": "verifier",
+							"value": "d17a5a253a685316",
+							"type": "string"
+						},
+						{
+							"key": "callback",
+							"value": "https://github.com/nandanhere/",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{consumersecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{consumerkey}}",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.flickr.com/services/oauth/access_token",
+					"protocol": "https",
+					"host": [
+						"www",
+						"flickr",
+						"com"
+					],
+					"path": [
+						"services",
+						"oauth",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauthpart3",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "tokenSecret",
+							"value": "d45264925ec192aa",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "72157720836535466-f54d10ed21e62e74",
+							"type": "string"
+						},
+						{
+							"key": "verifier",
+							"value": "d17a5a253a685316",
+							"type": "string"
+						},
+						{
+							"key": "callback",
+							"value": "https://github.com/nandanhere/",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "{{consumersecret}}",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "{{consumerkey}}",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.flickr.com/services/rest?nojsoncallback=1&format=json&method=flickr.test.login",
+					"protocol": "https",
+					"host": [
+						"www",
+						"flickr",
+						"com"
+					],
+					"path": [
+						"services",
+						"rest"
+					],
+					"query": [
+						{
+							"key": "nojsoncallback",
+							"value": "1"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "method",
+							"value": "flickr.test.login"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var randomSorts = [\"faves\", \"views\", \"comments\" ,\"interesting\"];",
+					"var randomExtras = ['description', ' license', ' date_upload', ' date_taken', ' owner_name', ' icon_server', ' original_format', ' last_update', ' geo', ' tags', ' machine_tags', ' o_dims', ' views', ' media', ' path_alias', ' url_sq', ' url_t', ' url_s', ' url_q', ' url_m', ' url_n', ' url_z', ' url_c', ' url_l', ' url_o'];",
+					"var howmanyperpage = _.random(500);",
+					"var numofpages = 2;",
+					"pm.environment.set('EXTRAS',randomExtras[_.random(randomExtras.length-1)]);",
+					"pm.environment.set('SORT',randomSorts[_.random(randomSorts.length-1)]);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "---",
+			"type": "string"
+		}
+	]
+}
