@@ -1,0 +1,5 @@
+2022-03-22 16:35:48,347:INFO:opened log in page. response code is 200 and time elapsed is 0.532353
+2022-03-22 16:35:49,435:INFO:Logged in to website
+2022-03-22 16:36:10,210:WARNING:compressing image since it is greater than 1 mb
+2022-03-22 16:36:11,963:INFO:image is uploaded
+2022-03-22 16:36:16,918:INFO:text written and submitted
